@@ -6,14 +6,12 @@ import Home from "./pages/Home"
 import View from "./pages/View"
 import WishList from "./pages/WishList"
 import PageNotFound from "./pages/PageNotFound"
-import Header from "./components/Header"
 import Footer from "./components/Footer"
 
 function App() {
 
   return (
-    <>
-
+    <div className='flex flex-col min-h-screen w-full'>
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/wishlist' element={<WishList />}></Route>
@@ -22,7 +20,7 @@ function App() {
         <Route path='/*' element={<PageNotFound />}></Route>
       </Routes>
       <Footer />
-    </>
+    </div>
   )
 }
 
