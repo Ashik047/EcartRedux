@@ -4,8 +4,9 @@ import axios from "axios";
 
 /* action that returns a promise (async) */
 export const fetchProducts = createAsyncThunk("products/fetchProducts", async () => {
-    const result = await axios.get("https://dummyjson.com/products")
+    const result = await axios.get("https://dummyjson.com/products");
     // console.log(result.data.products);
+    sessionStorage.setItem("allProducts", JSON.stringify(result.data.products));
     return result.data.products;
 
 })

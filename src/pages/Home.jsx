@@ -20,7 +20,7 @@ const Home = () => {
 
             <div className='container px-10 w-full pt-[40px] py-6 grow mx-auto'>
                 {
-                    loading ? (<div className='flex justify-center items-center w-full text-center h-full'>
+                    loading ? (<div className='flex justify-center items-center w-full text-center h-full grow my-auto'>
                         <img src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif" alt="loading" className='w-[200px] aspect-square object-cover object-center text-center block' />
                     </div>) : allProducts?.length > 0 ? (
                         <div className='grid grid-cols-4 gap-4'>
