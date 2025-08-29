@@ -5,10 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { addToWishlist } from '../redux/slices/wishlistSlice';
+import { addToCart } from '../redux/slices/cartSlice';
 
 const View = () => {
+
     const dispatch = useDispatch();
     const userWishlist = useSelector(state => state.wishlistReducer);
+    const userCart = useSelector(state => state.cartReducer);
     const [product, setProduct] = useState({});
     const { id } = useParams();
     const { allProducts } = useSelector(state => state.productReducer);
@@ -28,6 +31,14 @@ const View = () => {
             alert("Product is already in the wishlist");
         }
     }
+    const handleCart = () => {
+        dispatch(addToCart(product));
+        if (!userCart?.find(item => item.id == id)) {
+            alert("Product is added to the cart");
+        } else {
+            alert("Product quantity incremented");
+        }
+    }
 
 
     return (
@@ -39,7 +50,7 @@ const View = () => {
                     <div><img src={product?.thumbnail} alt="product" className='w-full h-[500px] mb-4 object-contain' />
                         <div className='flex justify-evenly'>
                             <button className='bg-red-700 rounded-md text-white hover:bg-red-500 py-2 px-6' onClick={handleWishlist}>Add to Wishlist</button>
-                            <button className='bg-blue-700 rounded-md text-white hover:bg-blue-500 py-2 px-6'>Add to Cart</button>
+                            <button className='bg-blue-700 rounded-md text-white hover:bg-blue-500 py-2 px-6' onClick={handleCart}>Add to Cart</button>
                         </div>
                     </div>
                     <div>
